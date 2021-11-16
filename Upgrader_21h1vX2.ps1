@@ -44,8 +44,8 @@ Stop-Process -Name "NYUAD Windows 10 Upgrade" -ErrorAction Ignore
 New-Item -ItemType "directory" -Path "C:\Program Files (x86)\LANDesk\LDClient\sdmcache\AppsPortal\WIN\Scripts" -ErrorAction Ignore
 $stageLD1  = "C:\Program Files (x86)\LANDesk\LDClient\sdmcache\AppsPortal\WIN\Scripts\stage_cacheX2.zip"
 $stageLD2  = "C:\Program Files (x86)\LANDesk\LDClient\sdmcache\AppsPortal\WIN\Scripts\WinSCP.zip"
-$stageUrl1 = "https://onedrive.live.com/download?cid=526DD67E59DA5B20&resid=526DD67E59DA5B20%21509770&authkey=AHbu9CHU25Ow-0E" 
-$stageUrl2 = "https://onedrive.live.com/download?cid=526DD67E59DA5B20&resid=526DD67E59DA5B20%21509885&authkey=ALBPH3r_vyFVq3U"
+$stageUrl1 = "https://onedrive.live.com/download?cid=526DD67E59DA5B20&resid=" #source id removed (sensitive data)
+$stageUrl2 = "https://onedrive.live.com/download?cid=526DD67E59DA5B20&resid=" #source id removed (sensitive data)
 (New-Object System.Net.WebClient).DownloadFile($stageUrl1, $stageLD1)
 (New-Object System.Net.WebClient).DownloadFile($stageUrl2, $stageLD2)
 Set-Location "C:\Program Files (x86)\LANDesk\LDClient\sdmcache\AppsPortal\WIN\Scripts"
@@ -54,12 +54,12 @@ Expand-Archive -Path winscp.Zip -DestinationPath .\winscp
     Import-Module -name "C:\Program Files (x86)\LANDesk\LDClient\sdmcache\AppsPortal\WIN\Scripts\winscp" -Verbose
     # Set credentials to a PSCredential Object.
     $User = "cdm436"
-    $scpText = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String("UgBVAFQAYQBNAE8AVwBuAEsARAB2AGQAQgB3AHgA"))
+    $scpText = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String("")) #source id removed (sensitive data)
     $PWord = ConvertTo-SecureString $scpText -AsPlainText -Force
     $Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $PWord
     # Create a WinSCP Session.
-    $sessionOptions = New-WinSCPSessionOption -Hostname "sftp.abudhabi.nyu.edu" -Protocol Sftp -PortNumber 4410 -Credential $Credential -SshHostKeyFingerprint "ssh-ed25519 255 c1:64:69:dd:07:2a:8f:43:04:89:af:81:35:df:00:b5"
-    $session = New-WinSCPSession -SessionOption $sessionOptions
+    $sessionOptions = New-WinSCPSessionOption -Hostname "sftp.nyu.edu" -Protocol Sftp -PortNumber 4410 -Credential $Credential -SshHostKeyFingerprint "ssh-ed25519 " #source id removed (sensitive data)
+    $session = New-WinSCPSession -SessionOption $sessionOptions 
 
 
 
@@ -91,9 +91,9 @@ exit 2
 Write-Output "This is Old OS"
 }
 
-$DText = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String("RABYAEMAIQBjADAAbgBuADMAYwB0AA=="))
+$DText = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String("==")) #source id removed (sensitive data)
 $Password=ConvertTo-SecureString $DText -asplaintext -force
-$UserAccount = Get-LocalUser -Name "ITOps"
+$UserAccount = Get-LocalUser -Name " " #source id removed (sensitive data)
 $UserAccount | Set-LocalUser -Password $Password
 
 $windowsmediapath = "C:\Program Files\NYUAD IT\Windows 10 upgrade\"
@@ -146,7 +146,7 @@ function DownloadBlob{
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     
     DownloadBlob "7za920.zip" "2FAC454A90AE96021F4FFC607D4C00F8" "/upload/7za920.zip" $windowsmediapath
-    #DownloadBlob "winscp.zip" "84E4AA611652C2E5E81EF243EBA11722" "https://github.com/dotps1/WinSCP/releases/download/WinSCP-PowerShell-v5.17.10.0/WinSCP.zip" $windowsmediapath
+    #DownloadBlob "winscp.zip" "84E4AA611652C2E5E81EF243EBA11722" "https://github.com/" $windowsmediapath #source id removed (sensitive data)
 
 
 #prime 7z
@@ -199,9 +199,9 @@ if (Test-Path "C:\Program Files\NYUAD IT\Windows 10 upgrade\scripts\upgrade.ps1"
 else {
     New-Item -ItemType File -Name "upgrade.ps1" -Path $scriptspath
     $value = '
-$DText = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String("RABYAEMAIQBjADAAbgBuADMAYwB0AA=="))
+$DText = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String("==")) #source id removed (sensitive data)
 $Password=ConvertTo-SecureString $DText -asplaintext -force
-$Cred = New-Object System.Management.Automation.PSCredential ("ITOps", $Password)
+$Cred = New-Object System.Management.Automation.PSCredential ("", $Password) #source id removed (sensitive data)
 $ProcessArguments = "c:\temp\UpgradeStrap.ps1"
 (Start-Process -FilePath "powershell.exe " -Credential $Cred -ArgumentList $ProcessArguments -WorkingDirectory $env:windir -WindowStyle hidden -PassThru).WaitForExit()
     '
@@ -213,9 +213,9 @@ if (Test-Path "C:\Program Files\NYUAD IT\Windows 10 upgrade\scripts\Uninstall.ps
 else {
     New-Item -ItemType File -Name "Uninstall.ps1" -Path $scriptspath
     $value = '
-$DText = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String("RABYAEMAIQBjADAAbgBuADMAYwB0AA=="))
+$DText = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String("==")) #source id removed (sensitive data)
 $Password=ConvertTo-SecureString $DText -asplaintext -force
-$Cred = New-Object System.Management.Automation.PSCredential ("ITOps", $Password)
+$Cred = New-Object System.Management.Automation.PSCredential (" ", $Password) #source id removed (sensitive data)
 $ProcessArguments = "c:\temp\UninstallStrap.ps1"
 (Start-Process -FilePath "powershell.exe " -Credential $Cred -ArgumentList $ProcessArguments -WorkingDirectory $env:windir -WindowStyle hidden -PassThru).WaitForExit()
     '
@@ -377,9 +377,9 @@ if ($version -eq 10) {
     Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Value "0" 
 }
 
-$DText = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String("RABYAEMAIQBjADAAbgBuADMAYwB0AA=="))
+$DText = [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String("==")) #source id removed (sensitive data)
 $Password=ConvertTo-SecureString $DText -asplaintext -force
-$UserAccount = Get-LocalUser -Name "ITOps"
+$UserAccount = Get-LocalUser -Name "" #source id removed (sensitive data)
 $UserAccount | Set-LocalUser -Password $Password
 
 #Register Diagnostic Event Source
