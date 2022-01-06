@@ -12,7 +12,6 @@ curl -O -k https://y5vpnu.manage.trendmicro.com:443/officescan/console/html/TMSM
 unzip tmsminstall.zip
 
 #Install the Trend Software
-installer -pkg /private/tmp/tmsmuninstall/tmsmuninstall.pkg -target /
 installer -pkg /tmp/tmsminstall/tmsminstall.pkg -target /
 rm tmsminstall.zip
 rm -rf /tmp/tmsminstall
