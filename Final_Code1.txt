@@ -1,0 +1,102 @@
+﻿
+#$Date=Get-Date -format "yyyymmddhh"
+#$Filestring="U1_"
+#$Filename1="C:\Users\Pashanth.Rajamouli\Desktop\Test\"
+#$Filename2=$Filestring+$Date
+#$Location=$Filename1+$Filename2+'.csv'
+$Location='D:\PS_Scripts\U12.CSV'
+
+
+Write-Host $Location
+$CSVFileName = $Location
+$SQLInstance = "ZUSE2NVASSQLVM0"
+#$SQLDatabase = "WKFS_DBA"
+#$SQLTable = "dbo.Users"
+$SQLTempDatabase = "WKFS_DBA"
+$SQLTempTable = "dbo.Users1"
+# Start of time taken benchmark
+##############################################
+$Start = Get-Date
+
+##############################################
+# Creating Temp SQL Table
+##############################################
+#"Creating SQL Table $SQLTempTable for CSV Import"
+#$SQLCreateTempTable = "USE $SQLTempDatabase
+#CREATE TABLE $SQLTempTable (
+#RowID int IDENTITY(1,1) PRIMARY KEY,
+#RecordID varchar(50),
+#Date datetime,
+#[id] [nvarchar](255),
+#[card_id] [nvarchar](255),
+#[custom1] [nvarchar](255),
+#[uni_id] [nvarchar](50),
+#[group_id] [nvarchar](50),
+#[emp_div_name] [nvarchar](max),
+#[custom2] [nvarchar](max),
+#[current_aff] [nvarchar](max),
+#[current_aff_sub] [nvarchar](max),
+#[academic_group_cd] [nvarchar](max),
+#[academic_group_ld] [nvarchar](max),
+#[study_agrmnt_cd] [nvarchar](max),
+#[study_agrmnt_name] [nvarchar](max),
+#[emp_div_cd] [nvarchar](max),
+#[aff_sitecode] [nvarchar](max),
+#[aff_sitename] [nvarchar](max),
+#[prm_sup_org_cd] [nvarchar](max),
+#[location] [nvarchar](max),
+#[prm_sup_org_location_cd] [nvarchar](max),
+#[term] [nvarchar](max)
+#);"
+
+#Invoke-SQLCmd -Query $SQLCreateTempTable -ServerInstance $SQLInstance
+##############################################
+# Importing CSV and processing data
+##############################################
+$CSVImport = Import-CSV $CSVFileName
+$CSVRowCount = $CSVImport.Count
+$CSVRecordID = 0
+##############################################
+# ForEach CSV Line Inserting a row into the Temp SQL table
+##############################################
+"Inserting $CSVRowCount rows from CSV into SQL Table $SQLTempTable"
+ForEach ($CSVLine in $CSVImport)
+{
+# Setting variables for the CSV line, ADD ALL 170 possible CSV columns here
+$CSVRecordID++
+$CSVDate = Get-Date
+$CSVid = $CSVLine.UNIVERSITY_ID
+$CSVcard_id = $CSVLine.NET_ID
+$CSVcustom1 = $CSVLine.PRIMARY_AFFILIATION
+$CSVuni_id = $CSVLine.PRIMARY_AFFILIATION_SUBTYPE
+$CSVgroup_id = $CSVLine.CURRENT_AFFILIATIONS
+$CSVemp_div_name = $CSVLine.CURRENT_AFFILIATION_SUBTYPES
+$CSVcustom2 = $CSVLine.RFID
+$CSVcurrent_aff = $CSVLine.ACAD_GROUP_CD
+$CSVcurrent_aff_sub = $CSVLine.ACAD_GROUP_LD
+$CSVacademic_group_cd = $CSVLine.STUDY_AGRMNT_CD
+$CSVacademic_group_ld = $CSVLine.STUDY_AGRMNT_NAME
+$CSVstudy_agrmnt_cd = $CSVLine.EMP_DIV_CD
+$CSVstudy_agrmnt_name = $CSVLine.EMP_DIV_NAME
+$CSVemp_div_cd = $CSVLine.AFFILIATE_SITECODE
+$CSVaff_sitecode = $CSVLine.AFFILIATE_SITENAME
+$CSVaff_sitename = $CSVLine.PRIMARY_SUP_ORG_CD
+$CSVprm_sup_org_cd = $CSVLine.PRIMARY_SUP_ORG_NAME
+$CSVlocation = $CSVLine.PRIMARY_WORK_LOCATION
+$CSVprm_sup_org_location_cd = $CSVLine.PRIMARY_SUP_ORG_LOCATION_CD
+$CSVterm = $CSVLine.TERM_TYPE
+
+
+# SQL INSERT of CSV Line/Row
+##############################################
+$SQLInsert = "USE $SQLTempDatabase
+GO
+INSERT INTO $SQLTempTable (RecordID, Date, id,card_id,custom1,uni_id,group_id,emp_div_name,custom2,current_aff,current_aff_sub,academic_group_cd,academic_group_ld,study_agrmnt_cd,study_agrmnt_name,emp_div_cd,aff_sitecode,aff_sitename,prm_sup_org_cd,location,prm_sup_org_location_cd,term) 
+VALUES('$CSVRecordID', '$CSVDate','$CSVid','$CSVcard_id','$CSVcustom1','$CSVuni_id','$CSVgroup_id','$CSVemp_div_name','$CSVcustom2','$CSVcurrent_aff','$CSVcurrent_aff_sub','$CSVacademic_group_cd','$CSVacademic_group_ld','$CSVstudy_agrmnt_cd','$CSVstudy_agrmnt_name','$CSVemp_div_cd','$CSVaff_sitecode','$CSVaff_sitename','$CSVprm_sup_org_cd','$CSVlocation','$CSVprm_sup_org_location_cd','$CSVterm');"
+
+# Running the INSERT Query
+Invoke-SQLCmd -Query $SQLInsert -ServerInstance $SQLInstance
+# End of ForEach CSV line below
+
+}
+# End of ForEach CSV line above
