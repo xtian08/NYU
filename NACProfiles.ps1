@@ -40,7 +40,6 @@ netsh wlan show profiles
 
 #generate VPN and ISE Profile
 Remove-Item "C:\ProgramData\Cisco\Cisco AnyConnect Secure Mobility Client\Profile\DefaultProfile.xml"
-Remove-Item "C:\ProgramData\Cisco\Cisco AnyConnect Secure Mobility Client\ISE Posture\ISEPostureCFG.xml"
 
 if (Test-Path "C:\ProgramData\Cisco\Cisco AnyConnect Secure Mobility Client\ISE Posture") {}
 else {mkdir "C:\ProgramData\Cisco\Cisco AnyConnect Secure Mobility Client\ISE Posture"}
