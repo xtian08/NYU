@@ -1,0 +1,13 @@
+{
+  "setupassistant": [
+    {
+      "file": "/Library/installapplications/DEPNotify.pkg",
+      "url": "https://files.nomad.menu/DEPNotify.pkg",
+      "packageid": "menu.nomad.DEPNotify",
+      "version": "1.1.6",
+      "hash": "b1382d3fe604ce703a00e02fb7fea0ee2300e66bbd70d6c01adccc50babe02a9",
+      "name": "DEPNotify.pkg",
+      "type": "package"
+    }
+  ]
+}
