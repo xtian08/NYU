@@ -5,7 +5,7 @@ basename="/usr/bin/basename"
 codesign="/usr/bin/codesign"
 echo="/bin/echo"
 munkiimport="/usr/local/munki/munkiimport"
-munkipkg="/usr/local/munki-pkg/munkipkg"
+munkipkg="/usr/local/bin/munkipkg"
 open="/usr/bin/open"
 PlistBuddy="/usr/libexec/PlistBuddy"
 rm="/bin/rm"
@@ -16,7 +16,7 @@ pkg_name="$(${basename} ${PWD})"
 pkg_version="$(${PlistBuddy} -c 'print version' ./build-info.plist)"
 
 # This is the cert we're using to sign files for TCC
-signing_cert="Developer ID Application: Your Organization (ABCDE12345)"
+signing_cert="Apple Development: chriskint@yahoo.com (DQYR26DU8S)"
 
 # Array of files we're signing
 files_to_sign=('./payload/Library/installapplications/installapplications.py')
