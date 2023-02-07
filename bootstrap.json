@@ -11,7 +11,7 @@
   "setupassistant": [
     {
       "file": "/Library/installapplications/01-airwatch-23.01.0.pkg",
-      "url": "https://media.githubusercontent.com/media/xtian08/NYU/main/setupassistant/01-airwatch-23.01.0.pkg",
+      "url": "https://media.githubusercontent.com/media/xtian08/NYU/main/pkgs/01-airwatch-23.01.0.pkg",
       "packageid": "com.vmware.hub.mac",
       "version": "23.01.0",
       "hash": "5bf646d8f346682bfa95db6bd49f948b8f0163b309e0646c493a1cb0c8eae426",
@@ -20,7 +20,7 @@
     },
     {
       "file": "/Library/installapplications/02-DEPNotify-1.1.6.pkg",
-      "url": "https://media.githubusercontent.com/media/xtian08/NYU/main/setupassistant/02-DEPNotify-1.1.6.pkg",
+      "url": "https://media.githubusercontent.com/media/xtian08/NYU/main/pkgs/02-DEPNotify-1.1.6.pkg",
       "packageid": "menu.nomad.depnotify",
       "version": "1.1.6",
       "hash": "b1382d3fe604ce703a00e02fb7fea0ee2300e66bbd70d6c01adccc50babe02a9",
@@ -32,7 +32,7 @@
       "hash": "d3c555a82cf3f985bb3fef65510c48eb3e8ca4a3bf253411b2257a03f3a56919",
       "name": "DEPNotify Customization",
       "type": "rootscript",
-      "url": "https://raw.githubusercontent.com/xtian08/NYU/main/depnotify_customization.py"
+      "url": "https://raw.githubusercontent.com/xtian08/NYU/main/scripts/depnotify_customization.py"
     }
   ],
   "userland": [
@@ -41,7 +41,7 @@
       "hash": "163af05871322d98b66df108ea2413a86345cee6f79c337c1f928c2452464dda",
       "name": "DEPNotify User Launcher",
       "type": "userscript",
-      "url": "https://raw.githubusercontent.com/xtian08/NYU/main/depnotify_user_launcher.py"
+      "url": "https://raw.githubusercontent.com/xtian08/NYU/main/scripts/depnotify_user_launcher.py"
     },
     {
       "donotwait": true,
@@ -49,21 +49,21 @@
       "hash": "ab84bfb3b1ac2e6a91bc3961f4a1c852562d4d8bc0d6ed3b8601cbb3ecaaa766",
       "name": "Caffeinate Machine",
       "type": "rootscript",
-      "url": "https://raw.githubusercontent.com/xtian08/NYU/main/caffeinate.py"
+      "url": "https://raw.githubusercontent.com/xtian08/NYU/main/scripts/caffeinate.py"
     },
     {
       "file": "/Library/installapplications/bless_vm.py",
       "hash": "ede0b1817d1173f4950eb3a305e023240df211530ddbbb3e7d05adc98854bdb8",
       "name": "Bless VM",
       "type": "rootscript",
-      "url": "https://raw.githubusercontent.com/xtian08/NYU/main/bless_vm.py"
+      "url": "https://raw.githubusercontent.com/xtian08/NYU/main/scripts/bless_vm.py"
     },
     {
       "file": "/Library/installapplications/depnotify_end.py",
       "hash": "154f70f1c03711aae90bb8d2e6c06dc302608248865671136edc82af2c8b1082",
       "name": "DEPNotify End",
       "type": "rootscript",
-      "url": "https://raw.githubusercontent.com/xtian08/NYU/main/depnotify_end.py"
+      "url": "https://raw.githubusercontent.com/xtian08/NYU/main/scripts/depnotify_end.py"
     }
   ]
 }
