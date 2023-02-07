@@ -1,12 +1,21 @@
 {
   "setupassistant": [
     {
-      "file": "/Library/installapplications/DEPNotify.pkg",
-      "url": "https://files.nomad.menu/DEPNotify.pkg",
+      "file": "/Library/installapplications/01-airwatch-23.01.0.pkg",
+      "url": "https://github.com/xtian08/NYU/blob/main/setupassistant/01-airwatch-23.01.0.pkg?raw=true",
+      "packageid": "com.vmware.hub.mac",
+      "version": "23.01.0",
+      "hash": "5bf646d8f346682bfa95db6bd49f948b8f0163b309e0646c493a1cb0c8eae426",
+      "name": "01-airwatch-23.01.0.pkg",
+      "type": "package"
+    },
+    {
+      "file": "/Library/installapplications/02-DEPNotify-1.1.6.pkg",
+      "url": "https://github.com/xtian08/NYU/blob/main/setupassistant/02-DEPNotify-1.1.6.pkg?raw=true",
       "packageid": "menu.nomad.DEPNotify",
       "version": "1.1.6",
       "hash": "b1382d3fe604ce703a00e02fb7fea0ee2300e66bbd70d6c01adccc50babe02a9",
-      "name": "DEPNotify.pkg",
+      "name": "02-DEPNotify-1.1.6.pkg",
       "type": "package"
     }
   ]
