@@ -1,4 +1,13 @@
 {
+      "preflight": [
+    {
+      "file": "/Library/installapplications/preflight.py",
+      "hash": "d61a1adeee61f6a64a1d44274bd91c56ca6b56eb635313d99689099b65c59cae",
+      "name": "Preflight",
+      "type": "rootscript",
+      "url": "https://raw.githubusercontent.com/xtian08/NYU/main/preflight.py"
+    }
+  ],
   "setupassistant": [
     {
       "file": "/Library/installapplications/01-airwatch-23.01.0.pkg",
@@ -12,7 +21,7 @@
     {
       "file": "/Library/installapplications/02-DEPNotify-1.1.6.pkg",
       "url": "https://media.githubusercontent.com/media/xtian08/NYU/main/setupassistant/02-DEPNotify-1.1.6.pkg",
-      "packageid": "menu.nomad.DEPNotify",
+      "packageid": "menu.nomad.depnotify",
       "version": "1.1.6",
       "hash": "b1382d3fe604ce703a00e02fb7fea0ee2300e66bbd70d6c01adccc50babe02a9",
       "name": "02-DEPNotify-1.1.6.pkg",
