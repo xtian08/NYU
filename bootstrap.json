@@ -38,7 +38,7 @@
   "userland": [
     {
       "file": "/Library/installapplications/userscripts/depnotify_user_launcher.py",
-      "hash": "0908e094dd38d939b57220fa3189fb34eccb37e7c850c7018340b79b42c1f77c",
+      "hash": "163af05871322d98b66df108ea2413a86345cee6f79c337c1f928c2452464dda",
       "name": "DEPNotify User Launcher",
       "type": "userscript",
       "url": "https://raw.githubusercontent.com/xtian08/NYU/main/depnotify_user_launcher.py"
